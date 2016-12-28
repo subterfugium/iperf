@@ -2734,12 +2734,14 @@ iperf_new_stream(struct iperf_test *test, int s)
 {
     int i;
     struct iperf_stream *sp;
-    
+
     char template[1024];
     if (test->tmp_template) {
         snprintf(template, sizeof(template) / sizeof(char), "%s", test->tmp_template);
     } else {
-        char buf[] = "/tmp/iperf3.XXXXXX";
+        //char buf[] = "/tmp/iperf3.XXXXXX";
+        // Android friendly
+        char buf[] = "/data/local/tmp/iperf3.XXXXXX";
         snprintf(template, sizeof(template) / sizeof(char), "%s", buf);
     }
 
